@@ -3,6 +3,7 @@ from random import randint
 import time
 screen = Screen()
 screen.screensize(600, 600)
+screen.setup(900,700)
 screen.tracer(0)
 
 #Create The Players Paddle
@@ -41,10 +42,11 @@ def move_down():
 
 def cpu_move():
 	cpu_paddle.forward(20)
-	if cpu_paddle.ycor() > 200:
+	if cpu_paddle.ycor() == 300:
 		cpu_paddle.setheading(270)
-	else:
+	elif cpu_paddle.ycor() == -300:
 		cpu_paddle.setheading(90)
+
 
 
 screen.onkey(move_up, "Up")
@@ -62,9 +64,13 @@ game_on = True
 
 while game_on:
 	screen.update()
+	cpu_move()
 	ball.sety(ball.ycor() + ball.dy)
 	ball.setx(ball.xcor() + ball.dx)
-	if ball.ycor() > 400:
+	if ball.ycor() > 300:
+		ball.dx *= -1
+		ball.dy *= -1
+	if ball.ycor() < -300:
 		ball.dx *= -1
 		ball.dy *= -1
 	if ball.distance(player_paddle) < 15:
