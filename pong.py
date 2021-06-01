@@ -29,13 +29,13 @@ cpu_paddle.shapesize(0.8, 4)
 
 
 def move_up():
-	if player_paddle.ycor() < 400:
+	if player_paddle.ycor() < 290:
 		player_paddle.setheading(90)
 		player_paddle.forward(20)
 
 
 def move_down():
-	if player_paddle.ycor() > -400:
+	if player_paddle.ycor() > -290:
 		player_paddle.setheading(270)
 		player_paddle.forward(20)
 
