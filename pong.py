@@ -48,34 +48,35 @@ def cpu_move():
 		cpu_paddle.setheading(90)
 
 
+ball_x_move = -10
+ball_y_move = -10
+
+def move_ball():
+	ball.goto((ball.xcor() + ball_x_move), (ball.ycor() + ball_y_move))
 
 screen.onkey(move_up, "Up")
+
 screen.onkey(move_down, "Down")
 
 ball = Turtle()
 ball.penup()
 ball.shape("circle")
-ball.speed(5)
-ball.dx = 15
-ball.dy = 15
+ball.speed(8)
 
-print(player_paddle.pos())
 game_on = True
 
 while game_on:
 	screen.update()
+	move_ball()
 	cpu_move()
-	ball.sety(ball.ycor() + ball.dy)
-	ball.setx(ball.xcor() + ball.dx)
-	if ball.ycor() > 300:
-		ball.dx *= -1
-		ball.dy *= -1
-	if ball.ycor() < -300:
-		ball.dx *= -1
-		ball.dy *= -1
-	if ball.distance(player_paddle) < 15:
-		ball.dx *= -1
-		ball.dy *= -1
+	if ball.ycor() >= 330 or ball.ycor() <= -330:
+		ball_y_move *= -1
+		print(ball_y_move)
+
+	if ball.distance(player_paddle) < 40:
+		ball_x_move *= -1
+		print("ouch")
+
 
 	screen.listen()
 	time.sleep(0.1)
