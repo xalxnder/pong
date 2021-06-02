@@ -73,7 +73,7 @@ def move_ball():
 	ball.goto((ball.xcor() + ball_x_move), (ball.ycor() + ball_y_move))
 
 def reset_ball():
-	ball.goto(0,0)
+	ball.goto(0, 0)
 
 
 ball_x_move = -10
@@ -102,9 +102,6 @@ while game_on:
 	if ball.distance(right_paddle) < 50:
 		ball_x_move *= -1
 
-	# if ball.xcor() >= 440 or ball.xcor() <= -440:
-	# 	reset_ball()
-
 	if ball.xcor() >= 440:
 		reset_ball()
 		player_1.clear()
@@ -121,10 +118,4 @@ while game_on:
 		player_2.write("Player 2: " + str(player_2_score), True, align="center", font=("Arial", 30, "normal"))
 		print("Player 2: " + str(player_2_score))
 
-
-
-
 	time.sleep(0.1)
-
-
-screen.exitonclick()
