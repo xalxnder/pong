@@ -40,7 +40,6 @@ player_2.hideturtle()
 player_2.goto(250, 290)
 player_2.write("Player 2: " + str(player_1_score), True, align="center", font=("Arial", 30, "normal"))
 
-
 ball = Turtle()
 ball.penup()
 ball.shape("circle")
@@ -73,12 +72,12 @@ def right_move_down():
 def move_ball():
 	ball.goto((ball.xcor() + ball_x_move), (ball.ycor() + ball_y_move))
 
+def reset_ball():
+	ball.goto(0,0)
+
 
 ball_x_move = -10
 ball_y_move = -10
-
-
-
 
 
 #Player Controls
@@ -99,11 +98,30 @@ while game_on:
 
 	if ball.distance(left_paddle) < 50:
 		ball_x_move *= -1
-		print("ouch")
 
 	if ball.distance(right_paddle) < 50:
 		ball_x_move *= -1
-		print("ouch")
+
+	# if ball.xcor() >= 440 or ball.xcor() <= -440:
+	# 	reset_ball()
+
+	if ball.xcor() >= 440:
+		reset_ball()
+		player_1.clear()
+		player_1_score += 1
+		player_1.goto(-250, 290)
+		player_1.write("Player 1: " + str(player_1_score), True, align="center", font=("Arial", 30, "normal"))
+		print("Player 1: " + str(player_1_score))
+
+	if ball.xcor() <= -440:
+		reset_ball()
+		player_2.clear()
+		player_2_score += 1
+		player_2.goto(250, 290)
+		player_2.write("Player 2: " + str(player_2_score), True, align="center", font=("Arial", 30, "normal"))
+		print("Player 2: " + str(player_2_score))
+
+
 
 
 	time.sleep(0.1)
