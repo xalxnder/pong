@@ -6,7 +6,7 @@ screen.screensize(600, 600)
 screen.setup(900,700)
 screen.tracer(0)
 
-#Create The Players Paddle
+#Create The Player 1 Paddle
 left_paddle = Turtle()
 left_paddle.penup()
 left_paddle.setpos(-400,0)
@@ -16,7 +16,14 @@ left_paddle.color("blue")
 left_paddle.shape("square")
 left_paddle.shapesize(0.8, 4)
 
-#Create The Players Paddle
+player_1_score = 0
+player_1 = Turtle()
+player_1.penup()
+player_1.hideturtle()
+player_1.goto(-250, 290)
+player_1.write("Player 1: " + str(player_1_score), True, align="center", font=("Arial", 30, "normal"))
+
+#Create The Player 2 Paddle
 right_paddle = Turtle()
 right_paddle.penup()
 right_paddle.setpos(400,0)
@@ -26,12 +33,19 @@ right_paddle.color("blue")
 right_paddle.shape("square")
 right_paddle.shapesize(0.8, 4)
 
+player_2_score = 0
+player_2 = Turtle()
+player_2.penup()
+player_2.hideturtle()
+player_2.goto(250, 290)
+player_2.write("Player 2: " + str(player_1_score), True, align="center", font=("Arial", 30, "normal"))
 
 
 ball = Turtle()
 ball.penup()
 ball.shape("circle")
 ball.speed(8)
+
 
 def left_move_up():
 	if left_paddle.ycor() < 290:
@@ -56,21 +70,19 @@ def right_move_down():
 		right_paddle.setheading(270)
 		right_paddle.forward(20)
 
+def move_ball():
+	ball.goto((ball.xcor() + ball_x_move), (ball.ycor() + ball_y_move))
 
 
 ball_x_move = -10
 ball_y_move = -10
 
 
-def move_ball():
-	ball.goto((ball.xcor() + ball_x_move), (ball.ycor() + ball_y_move))
 
 
+
+#Player Controls
 screen.listen()
-#Player 1
-
-
-#Player 2
 screen.onkey(right_move_up, "Up")
 screen.onkey(right_move_down, "Down")
 screen.onkey(left_move_up, "w")
