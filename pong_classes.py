@@ -59,7 +59,6 @@ class Ball(Turtle):
 
 	def move(self):
 		self.goto((self.xcor() + self.dx), (self.ycor() + self.dy))
-		print("ahh")
 
 	def reset(self):
 		self.goto(0, 0)
