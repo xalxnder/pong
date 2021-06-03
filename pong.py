@@ -1,8 +1,11 @@
+import turtle
 from turtle import Turtle, Screen
 from random import randint
 import time
+turtle.colormode(255)
 screen = Screen()
 screen.screensize(600, 600)
+screen.bgcolor(241, 237, 238)
 screen.setup(900,700)
 screen.tracer(0)
 
@@ -12,7 +15,7 @@ left_paddle.penup()
 left_paddle.setpos(-400,0)
 left_paddle.setheading(90)
 left_paddle.speed(0)
-left_paddle.color("blue")
+left_paddle.color(61, 84, 103)
 left_paddle.shape("square")
 left_paddle.shapesize(0.8, 4)
 
@@ -21,6 +24,7 @@ player_1 = Turtle()
 player_1.penup()
 player_1.hideturtle()
 player_1.goto(-250, 290)
+player_1.color(219, 84, 97)
 player_1.write("Player 1: " + str(player_1_score), True, align="center", font=("Arial", 30, "normal"))
 
 #Create The Player 2 Paddle
@@ -29,7 +33,7 @@ right_paddle.penup()
 right_paddle.setpos(400,0)
 right_paddle.setheading(90)
 right_paddle.speed(0)
-right_paddle.color("blue")
+right_paddle.color(61, 84, 103)
 right_paddle.shape("square")
 right_paddle.shapesize(0.8, 4)
 
@@ -38,12 +42,29 @@ player_2 = Turtle()
 player_2.penup()
 player_2.hideturtle()
 player_2.goto(250, 290)
+player_2.color(219, 84, 97)
 player_2.write("Player 2: " + str(player_1_score), True, align="center", font=("Arial", 30, "normal"))
 
 ball = Turtle()
 ball.penup()
 ball.shape("circle")
 ball.speed(8)
+
+
+#Half Court
+pos = -320
+for i in range(16):
+	half_court = Turtle()
+	half_court.penup()
+	half_court.setpos(0, pos)
+	half_court.setheading(90)
+	half_court.color(138, 162, 158)
+	half_court.shape("square")
+	half_court.shapesize(0.5, 1)
+	pos += 50
+
+
+
 
 
 def left_move_up():
@@ -107,6 +128,7 @@ while game_on:
 		player_1.clear()
 		player_1_score += 1
 		player_1.goto(-250, 290)
+		player_1.color(219, 84, 97)
 		player_1.write("Player 1: " + str(player_1_score), True, align="center", font=("Arial", 30, "normal"))
 		print("Player 1: " + str(player_1_score))
 
@@ -115,6 +137,7 @@ while game_on:
 		player_2.clear()
 		player_2_score += 1
 		player_2.goto(250, 290)
+		player_2.color(219, 84, 97)
 		player_2.write("Player 2: " + str(player_2_score), True, align="center", font=("Arial", 30, "normal"))
 		print("Player 2: " + str(player_2_score))
 
